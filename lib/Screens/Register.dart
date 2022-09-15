@@ -4,13 +4,13 @@
 // 'dart:ffi';
 // // import 'dart:ffi';
 
+// ignore_for_file: avoid_print, sort_child_properties_last, unused_import
+
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_2/Models/RegisterRequest.dart';
-import 'package:flutter_application_2/Networks/ApiService.dart';
+
 import 'package:flutter_application_2/Screens/logininPage.dart';
 
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -19,6 +19,8 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:intl/intl.dart';
 import 'package:pattern_formatter/pattern_formatter.dart';
 import 'package:provider/provider.dart';
+
+import '../Network/ApiService.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -86,18 +88,18 @@ class _RegisterState extends State<Register> {
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: Color.fromARGB(255, 235, 231, 231),
+          color: const Color.fromARGB(255, 235, 231, 231),
           child: Center(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 25,
                     backgroundImage: AssetImage(
                       'images/img8.jpeg',
                     ),
                   ),
-                  Text(
+                  const Text(
                     'User Details',
                     style: TextStyle(fontSize: 25, color: Color(0xFF0F0E0E)),
                   ),
@@ -124,7 +126,7 @@ class _RegisterState extends State<Register> {
                                 return 'enter the user';
                               }
                             }),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -139,7 +141,7 @@ class _RegisterState extends State<Register> {
                                 )),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
@@ -163,7 +165,7 @@ class _RegisterState extends State<Register> {
                                 return 'enter valid number';
                               }
                             }),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -178,7 +180,7 @@ class _RegisterState extends State<Register> {
                                 )),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
@@ -186,9 +188,6 @@ class _RegisterState extends State<Register> {
                           child: TextFormField(
                             autovalidateMode: AutovalidateMode.always,
                             keyboardType: TextInputType.emailAddress,
-                            inputFormatters: [
-                              
-                            ],
                             controller: emailController,
                             validator: ((email) {
                               if (email!.isEmpty) {
@@ -201,7 +200,7 @@ class _RegisterState extends State<Register> {
                                 return 'invalid email';
                               }
                             }),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -216,7 +215,7 @@ class _RegisterState extends State<Register> {
                                 )),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
@@ -225,19 +224,14 @@ class _RegisterState extends State<Register> {
 
                             autovalidateMode: AutovalidateMode.always,
                             keyboardType: TextInputType.streetAddress,
-                            inputFormatters: [
-                              //  MaskTextInputFormatter(mask: "####",
-                              // filter: {"#": RegExp(r"[a-zA-Z]"),
-                              // } ,
-                              // ) 
-                            ],
+                            inputFormatters: [],
                             controller: addressController,
                             validator: ((address) {
                               if (address!.isEmpty) {
                                 return 'enter the address';
                               }
                             }),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -254,7 +248,7 @@ class _RegisterState extends State<Register> {
                         ),
 
                        
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
@@ -262,9 +256,7 @@ class _RegisterState extends State<Register> {
                           child: TextFormField(
                             autovalidateMode: AutovalidateMode.always,
                             keyboardType: TextInputType.number,
-                            inputFormatters: [
-                              
-                            ],
+                            inputFormatters:[ ],
                             controller: altphnController,
                             validator: (altphone) {
                               if (altphone!.isEmpty) {
@@ -278,7 +270,7 @@ class _RegisterState extends State<Register> {
                                 return 'enter valid number';
                               }
                             },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -293,7 +285,7 @@ class _RegisterState extends State<Register> {
                                 )),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
@@ -324,7 +316,7 @@ class _RegisterState extends State<Register> {
                             },
 
                           
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -341,7 +333,7 @@ class _RegisterState extends State<Register> {
                           ),
 
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
@@ -363,7 +355,7 @@ class _RegisterState extends State<Register> {
                                 return 'enter your qualification';
                               }
                             },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -378,7 +370,7 @@ class _RegisterState extends State<Register> {
                                 )),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
@@ -392,7 +384,7 @@ class _RegisterState extends State<Register> {
                                 return 'please enter your blood group';
                               }
                             },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -411,7 +403,7 @@ class _RegisterState extends State<Register> {
 
 
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
@@ -419,8 +411,7 @@ class _RegisterState extends State<Register> {
                           child: TextFormField(
                             autovalidateMode: AutovalidateMode.always,
                             keyboardType: TextInputType.visiblePassword,
-                            inputFormatters: [
-                              
+                            inputFormatters: const [
                             ],
                             controller: passwordController,
                             onChanged: (value) => password = value,
@@ -432,7 +423,7 @@ class _RegisterState extends State<Register> {
                               }
                             },
                             obscureText: true,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -447,7 +438,7 @@ class _RegisterState extends State<Register> {
                                 )),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
@@ -466,7 +457,7 @@ class _RegisterState extends State<Register> {
                               }
                             },
                             obscureText: true,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -481,10 +472,10 @@ class _RegisterState extends State<Register> {
                                 )),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
-                        Align(
+                        const Align(
                           alignment: Alignment.topLeft,
                           child: Text(
                             "Gender:",
@@ -509,7 +500,7 @@ class _RegisterState extends State<Register> {
                                 return "invalid gender";
                               }
                             },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -524,7 +515,7 @@ class _RegisterState extends State<Register> {
                                 )),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         // RadioListTile<int>(
@@ -545,12 +536,12 @@ class _RegisterState extends State<Register> {
                         //     radioValue;
                         //   },
                         // ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
                           width: 400,
-                          child: RaisedButton(
+                          child: ElevatedButton(
                             onPressed: () {
                               
                               if(_formkey.currentState!.validate()){
@@ -585,30 +576,32 @@ class _RegisterState extends State<Register> {
                             //     );
                             //   }
                               }
-                            print("${emailController.text}");
+                            print(emailController.text);
                             },
-                            child: Text(
+                            child: const Text(
                               'Register',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.normal,
                                   fontSize: 15),
                             ),
-                            color: Color.fromARGB(255, 87, 13, 136),
+                            style:ElevatedButton.styleFrom(
+                                    backgroundColor:  const Color.fromARGB(255, 87, 13, 136),
+                                  ) ,
                           ),
                         ),
-                        Divider(height: 50),
+                        const Divider(height: 50),
                         Center(
                             child: Padding(
                           padding: const EdgeInsets.only(top: 55),
-                          child: FlatButton(
-                            splashColor: null,
+                          child: TextButton(
+                    
                             onPressed: () {
                               Navigator.of(context).pop(MaterialPageRoute(
-                                  builder: (context) => Loginscreen()));
+                                  builder: (context) => const Loginscreen()));
                             },
                             child: RichText(
-                                text: TextSpan(
+                                text: const TextSpan(
                                     text: 'Already have an account?',
                                     style: TextStyle(color: Colors.black),
                                     children: [
@@ -648,24 +641,24 @@ api.register(UserData).then((response){
 
   if(response.message== "Your account has been created successfully."){
     print("worked");
-     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Padding(
-            padding: const EdgeInsets.only(left:105.0),
+            padding: EdgeInsets.only(left:105.0),
             child: Text("Register Sucessfully"),
           ),
         ));
 
-  print('${username1Controller.text}');
-    print('${phonenumController.text}');
-    print('${emailController.text}');
-    print('${addressController.text}');
-    print('${altphnController.text}');
-    print('${dobController.text}');
-    print('${qualifyController.text}');
-    print('${bloodController.text}');
-    print('${passwordController.text}');
-    print('${confirmpassController.text}');
-    print('${genderController.text}');
+  print(username1Controller.text);
+    print(phonenumController.text);
+    print(emailController.text);
+    print(addressController.text);
+    print(altphnController.text);
+    print(dobController.text);
+    print(qualifyController.text);
+    print(bloodController.text);
+    print(passwordController.text);
+    print(confirmpassController.text);
+    print(genderController.text);
     print('$UserData');
   }
   else {

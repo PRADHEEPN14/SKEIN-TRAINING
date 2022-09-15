@@ -1,14 +1,13 @@
-import 'dart:ui';
 
+// ignore_for_file: avoid_print
+
+import 'package:flutter_application_2/Network/ApiService.dart';
+// ignore: unused_import
 import 'package:flutter_application_2/Screens/Allusers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Models/GetAllUser.dart';
-import 'package:flutter_application_2/Networks/ApiService.dart';
-import 'package:flutter_application_2/Screens/Allusers.dart';
 import 'package:provider/provider.dart';
 
-import '../Models/GetAllUser.dart';
-import 'Allusers.dart';
 
 
 class Alluser extends StatefulWidget {
@@ -20,7 +19,7 @@ class Alluser extends StatefulWidget {
 
 class _AlluserState extends State<Alluser> {
   var ctx;
-  bool? isloading = true;
+  bool? circular = false;
 
   List<UserData> user = [];
 
@@ -45,29 +44,29 @@ class _AlluserState extends State<Alluser> {
     ctx = newContext;
     return Scaffold(
       appBar: AppBar(
-        title: Text('list of users'),
+        title: const Text('list of users'),
       ),
       body: ListView.builder(
         
         itemCount: user.length<25? user.length:10,
-        itemBuilder: ((context, i) {
+        itemBuilder: ((context, i) {  
 
          
           // Using CARD design...
           return Card(elevation: 3,
-            shadowColor: Color.fromARGB(255, 122, 168, 206),
+            shadowColor: const Color.fromARGB(255, 122, 168, 206),
             child: ListTile(
               trailing: PopupMenuButton(
                 itemBuilder:(context) => [
-                  PopupMenuItem(
+                  const PopupMenuItem(
                     child: Text("Edit"),
                     value: 1,
                   ),
-                  PopupMenuItem(
+                  const PopupMenuItem(
                     child: Text("Delete"),
                     value: 2,
                   ),
-                  PopupMenuItem(
+                  const PopupMenuItem(
                     child: Text("more"),
                     value: 3,
                   )
@@ -75,8 +74,8 @@ class _AlluserState extends State<Alluser> {
             ),
             // trailing: IconButton(onPressed: (){},
             // icon: Icon(Icons.more_vert)),
-            title: Text('${user[i].username}',style: TextStyle(fontWeight: FontWeight.bold),),
-            subtitle: Text('${user[i].email}',style: TextStyle(color: Color.fromARGB(255, 139, 139, 138,),fontSize: 13)),
+            title: Text('${user[i].username}',style: const TextStyle(fontWeight: FontWeight.bold),),
+            subtitle: Text('${user[i].email}',style: const TextStyle(color: Color.fromARGB(255, 139, 139, 138,),fontSize: 13)),
             leading: Text('${i}'),
             ),
             );

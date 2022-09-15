@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Models/LoginRequest.dart';
-import 'package:flutter_application_2/Models/LoginResponse.dart';
-import 'package:flutter_application_2/Networks/ApiService.dart';
 import 'package:flutter_application_2/Screens/Register.dart';
 
 import 'package:flutter_application_2/Screens/homepage.dart';
 import 'package:provider/provider.dart';
 
+import '../Network/ApiService.dart';
+
 class Loginscreen extends StatefulWidget {
-  Loginscreen({Key? key}) : super(key: key);
+  const Loginscreen({Key? key}) : super(key: key);
 
   @override
   State<Loginscreen> createState() => _LoginscreenState();
@@ -42,11 +42,11 @@ class _LoginscreenState extends State<Loginscreen> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('images/img9.jpeg'), fit: BoxFit.cover)),
           child: Padding(
-            padding: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 30),
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(30),
@@ -56,7 +56,7 @@ class _LoginscreenState extends State<Loginscreen> {
                     children: [
                       Center(
                         child: Column(
-                          children: [
+                          children: const [
                             CircleAvatar(
                               radius: 25,
                               backgroundImage: AssetImage(
@@ -71,7 +71,7 @@ class _LoginscreenState extends State<Loginscreen> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 28,
                       ),
                       SizedBox(
@@ -90,7 +90,7 @@ class _LoginscreenState extends State<Loginscreen> {
                               return 'Invalid email';
                             }
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             
                               contentPadding: EdgeInsets.only(
                                   top: 10, bottom: 10, left: 15),
@@ -106,7 +106,7 @@ class _LoginscreenState extends State<Loginscreen> {
                               )),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 28,
                       ),
                       SizedBox(
@@ -124,7 +124,7 @@ class _LoginscreenState extends State<Loginscreen> {
                             }
                           },
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               contentPadding: EdgeInsets.only(
                                   top: 10, bottom: 10, left: 15),
                               isDense: true,
@@ -138,21 +138,21 @@ class _LoginscreenState extends State<Loginscreen> {
                               )),
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Align(
-                        alignment: Alignment.topRight,
+                        alignment: Alignment.bottomRight,
                         child: SizedBox(
-                            height: 30,
-                            child: FlatButton(
+                            height: 31,
+                            child: TextButton(
                                 onPressed: () {},
-                                child: Text('  forgot password?'))),
+                                child: const Text('  forgot password?',style: TextStyle(color: Colors.black),))),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       SizedBox(
                         width: 400,
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () async {
                             if (formkey.currentState!.validate()) {
                               _Login();
@@ -174,71 +174,81 @@ class _LoginscreenState extends State<Loginscreen> {
                             //                           builder: (context) => Welcome()));
                             // }
                           },
-                          child: Text(
+                          style:ElevatedButton.styleFrom(
+                                    backgroundColor:  const Color.fromARGB(255, 87, 13, 136),
+                                  ),
+                          child: const Text(
                             'LOGIN',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 15),
-                          ),
-                          color: Color.fromARGB(255, 87, 13, 136),
+                          ) 
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 50),
+                        child: Center(
+                          child: Text('or login using',style: TextStyle(color: Colors.white),),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 50),
-                        child: Center(
-                          child: Text('or login using'),
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                SizedBox(
+                                  width: 110,
+                                  child: TextButton(
+                                    onPressed: () {},
+                                    style:ElevatedButton.styleFrom(
+                                      backgroundColor:  Colors.transparent,
+                                    ),
+                                    child: const Icon(
+                                      Icons.facebook_sharp,
+                                      size: 30,
+                                      color: Colors.white,
+                                    )
+                                  ),
+                                )
+                              ],
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Column(
+                              children: [
+                                SizedBox(
+                                  width: 110,
+                                  child: TextButton(
+                                    onPressed: () {},
+                                    style:ElevatedButton.styleFrom(
+                                      backgroundColor:  Colors.transparent,
+                                    ),
+                                    child: const Icon(
+                                      Icons.email_outlined,
+                                      size: 30,
+                                      color: Colors.white,
+                                    )
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            children: [
-                              SizedBox(
-                                width: 110,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Icon(
-                                    Icons.facebook_outlined,
-                                    color: Colors.white,
-                                  ),
-                                  color: Colors.transparent,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            children: [
-                              SizedBox(
-                                width: 110,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Icon(
-                                    Icons.g_mobiledata_rounded,
-                                    size: 30,
-                                    color: Colors.white,
-                                  ),
-                                  color: Colors.transparent,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 30),
+                        padding: const EdgeInsets.only(top: 90),
                         child: Center(
-                            child: FlatButton(
+                            child: TextButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Register()));
+                                builder: (context) => const Register()));
                           },
                           child: RichText(
-                              text: TextSpan(
+                              text: const TextSpan(
                                   text: 'do not have an account?',
                                   style: TextStyle(color: Colors.white),
                                   children: [
@@ -265,21 +275,16 @@ class _LoginscreenState extends State<Loginscreen> {
     UserData.password = passwordController.text;
     var api = Provider.of<ApiService>(ctx!, listen: false);
     api.login(UserData).then((response) {
-     // print("status1 ${response.token!}");
-     // String stats =response.status!.toString();
-
-
-      // print('statuscode${response.token!.length}');
-      // var res = response.;
+   
 
       if (response.status!) {
         
         String stats =response.status.toString();
         print('if$stats');
 
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Padding(
-            padding: const EdgeInsets.only(left:105.0),
+            padding: EdgeInsets.only(left:105.0),
             child: Text("Login Sucessfully"),
           ),
         ));
@@ -291,10 +296,8 @@ class _LoginscreenState extends State<Loginscreen> {
       } else
       {
         print('else');
-        //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        //   content: Text("username/password incorrect"),
-        // ));
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+       
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text("username/password Incorrect"),
         ));
         

@@ -1,9 +1,12 @@
+// ignore_for_file: unused_import
+
 import 'package:dio/dio.dart';
 import 'package:flutter_application_2/Models/GetAllUser.dart';
 import 'package:flutter_application_2/Models/LoginRequest.dart';
 import 'package:flutter_application_2/Models/LoginResponse.dart';
 import 'package:flutter_application_2/Models/RegisterRequest.dart';
 import 'package:flutter_application_2/Models/RegisterResponse.dart';
+import 'package:flutter_application_2/Screens/aboutme.dart';
 
 
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -14,9 +17,7 @@ part 'ApiService.g.dart';
 // Run this code in termial to generate ApiService.g.dart file
 //flutter packages pub run build_runner watch --delete-conflicting-outputs
 
-//@RestApi(baseUrl: 'http://3.109.217.67:80/sss/')
-//@RestApi(baseUrl: 'https://demo.emeetify.com:81/sss/')
-// @RestApi(baseUrl: 'http://172.16.200.70:3445/sss/') https://demo.emeetify.com:81/playgroup/ 
+
 @RestApi(baseUrl: 'http://43.204.221.33:8080/crud/')
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
@@ -30,6 +31,8 @@ abstract class ApiService {
   @GET("getallUser")
   Future<AllUser>alluser();
 
+  @GET("getUser/")
+  Future<LoginRes>aboutme(@Body() body);
   // @DELETE("/posts/{id}")
   // Future<void> deletePost(@Path("id") int postId);
 

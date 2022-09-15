@@ -43,6 +43,7 @@ dependencies:
   pattern_formatter: ^2.0.0
   dob_input_field: ^1.0.0
   mask_text_input_formatter: ^2.3.0
+  intl: ^0.17.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

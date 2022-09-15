@@ -1,65 +1,65 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class FormValidationWithDropdown extends StatefulWidget {
-  @override
-  _FormValidationWithDropdownState createState() =>
-      _FormValidationWithDropdownState();
-}
+// class FormValidationWithDropdown extends StatefulWidget {
+//   @override
+//   _FormValidationWithDropdownState createState() =>
+//       _FormValidationWithDropdownState();
+// }
 
-class _FormValidationWithDropdownState
-    extends State<FormValidationWithDropdown> {
-  final _formKey = GlobalKey<FormState>();
-  bool _autovalidate = false;
-  late String selectedSalutation;
- late String name;
+// class _FormValidationWithDropdownState
+//     extends State<FormValidationWithDropdown> {
+//   final _formKey = GlobalKey<FormState>();
+//   bool _autovalidate = false;
+//   late String selectedSalutation;
+//  late String name;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Form(
-        key: _formKey,
-        autovalidateMode: AutovalidateMode.always,
-        child: Column(
-          children: <Widget>[
-            DropdownButtonFormField<String>(
-              value: selectedSalutation,
-              hint: Text(
-                'Salutation',
-              ),
-              onChanged: (salutation) =>
-                  setState(() => selectedSalutation = salutation!),
-              validator: (value) => value == null ? 'field required' : null,
-              items:
-                  ['MR.', 'MS.'].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            TextFormField(
-              decoration: InputDecoration(hintText: 'Name'),
-              validator: (value) => value!.isEmpty ? 'Name is required' : null,
-              onSaved: (value) => name = value!,
-            ),
-            FlatButton(
-              child: Text('PROCEED'),
-              color: Colors.green,
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  //form is valid, proceed further
-                  _formKey.currentState!.save();//save once fields are valid, onSaved method invoked for every form fields
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Form(
+//         key: _formKey,
+//         autovalidateMode: AutovalidateMode.always,
+//         child: Column(
+//           children: <Widget>[
+//             DropdownButtonFormField<String>(
+//               value: selectedSalutation,
+//               hint: Text(
+//                 'Salutation',
+//               ),
+//               onChanged: (salutation) =>
+//                   setState(() => selectedSalutation = salutation!),
+//               validator: (value) => value == null ? 'field required' : null,
+//               items:
+//                   ['MR.', 'MS.'].map<DropdownMenuItem<String>>((String value) {
+//                 return DropdownMenuItem<String>(
+//                   value: value,
+//                   child: Text(value),
+//                 );
+//               }).toList(),
+//             ),
+//             TextFormField(
+//               decoration: InputDecoration(hintText: 'Name'),
+//               validator: (value) => value!.isEmpty ? 'Name is required' : null,
+//               onSaved: (value) => name = value!,
+//             ),
+//             TextButton(
+//               child: Text('PROCEED'),
+//               color: Colors.green,
+//               onPressed: () {
+//                 if (_formKey.currentState!.validate()) {
+//                   //form is valid, proceed further
+//                   _formKey.currentState!.save();//save once fields are valid, onSaved method invoked for every form fields
 
-                } else {
-                  setState(() {
-                    _autovalidate = true; //enable realtime validation
-                  });
-                }
-              },
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
+//                 } else {
+//                   setState(() {
+//                     _autovalidate = true; //enable realtime validation
+//                   });
+//                 }
+//               },
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
